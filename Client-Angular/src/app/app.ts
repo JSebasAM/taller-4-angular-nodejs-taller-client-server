@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarConfig, NavbarOrganism } from '@brejcha13320/design-system-bootstrap';
+import { environment } from '../environments/environment';
 
 /**
  * Componente raíz de la aplicación.
@@ -10,12 +11,6 @@ import { NavbarConfig, NavbarOrganism } from '@brejcha13320/design-system-bootst
  * de la aplicación Angular. Define la estructura base
  * y configura el navbar principal mediante el componente
  * `NavbarOrganism`.
- *
- * Es responsable de:
- * - Inicializar el layout general
- * - Proveer la configuración del menú de navegación
- * - Renderizar las vistas según el sistema de rutas
- *
  */
 @Component({
   selector: 'app-root',
@@ -24,45 +19,26 @@ import { NavbarConfig, NavbarOrganism } from '@brejcha13320/design-system-bootst
   imports: [RouterOutlet, NavbarOrganism],
 })
 export class App {
+  /**
+   * Indica si la aplicación se ejecuta en modo demo con datos simulados.
+   */
+  readonly isDemo: boolean = environment.useMock;
 
   /**
    * Configuración del navbar principal.
-   *
-   * @remarks
-   * Define el título, icono y enlaces de navegación
-   * que se renderizan en el componente `NavbarOrganism`.
-   *
-   * @type {NavbarConfig}
-   *
-   * @example
-   * ```ts
-   * {
-   *   title: 'Angular Client',
-   *   iconConfig: {
-   *     icon: 'bootstrap',
-   *     size: 2
-   *   },
-   *   navLinks: [
-   *     { text: 'Usuarios', url: '/users' },
-   *     { text: 'Productos', url: '/products' }
-   *     { text: 'Proveedores', url: '/providers' }
-   *   ]
-   * }
-   * ```
    */
   navbarConfig: NavbarConfig = {
     title: 'Angular Client',
     iconConfig: {
       icon: 'bootstrap',
-      size: 2
+      size: 2,
     },
     navLinks: [
       { text: 'Usuarios', url: '/users' },
       { text: 'Productos', url: '/products' },
       { text: 'Proveedores', url: '/providers' },
-      { text: 'Orders', url: '/orders'},
-      { text: 'Tickets', url: '/tickets' }
-    ]
+      { text: 'Orders', url: '/orders' },
+      { text: 'Tickets', url: '/tickets' },
+    ],
   };
-
 }
