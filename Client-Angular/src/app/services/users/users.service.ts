@@ -22,7 +22,6 @@ import { User } from '../../interfaces/users.interface';
   providedIn: 'root',
 })
 export class UsersService {
-
   /**
    * Cliente HTTP de Angular para realizar peticiones a la API.
    * Se inyecta usando la función `inject`.

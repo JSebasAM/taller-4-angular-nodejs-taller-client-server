@@ -33,7 +33,6 @@ import { AlertComponent } from '../../components/alert/alert.component';
   imports: [TicketsTableComponent, AlertComponent],
 })
 export class TicketsPage {
-
   /**
    * Listado de tickets obtenidos desde el servicio.
    * @type {Ticket[]}

@@ -11,10 +11,7 @@ describe('UsersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ]
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(UsersService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -26,15 +23,12 @@ describe('UsersService', () => {
   });
 
   describe('Creación del servicio', () => {
-
     it('debería crearse correctamente', () => {
       expect(service).toBeTruthy();
     });
-
   });
 
   describe('getAllUsers', () => {
-
     it('debería realizar una petición GET y retornar una lista de usuarios', () => {
       const countUsers = 5;
       const mockUsers: User[] = USERS_MOCK;
@@ -66,10 +60,8 @@ describe('UsersService', () => {
 
       req.flush(
         { message: 'Error interno del servidor' },
-        { status: 500, statusText: 'Internal Server Error' }
+        { status: 500, statusText: 'Internal Server Error' },
       );
     });
-
   });
-
 });

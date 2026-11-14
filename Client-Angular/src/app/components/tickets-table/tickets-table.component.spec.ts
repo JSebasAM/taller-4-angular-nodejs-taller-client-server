@@ -9,9 +9,8 @@ describe('TicketsTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TicketsTableComponent]
-    })
-    .compileComponents();
+      imports: [TicketsTableComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TicketsTableComponent);
     component = fixture.componentInstance;
@@ -74,5 +73,4 @@ describe('TicketsTableComponent', () => {
     const rows = fixture.debugElement.queryAll(By.css('tbody tr'));
     expect(rows.length).toBe(0);
   });
-
 });

@@ -11,10 +11,7 @@ describe('ProductsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-       providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ]
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(ProductsService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -26,15 +23,12 @@ describe('ProductsService', () => {
   });
 
   describe('Creación del servicio', () => {
-
     it('debería crearse correctamente', () => {
       expect(service).toBeTruthy();
     });
-
   });
 
   describe('getAllProducts', () => {
-  
     it('debería realizar una petición GET y retornar una lista de productos', () => {
       const countProducts = 5;
       const mockProducts: Product[] = PRODUCTS_MOCK;
@@ -66,10 +60,8 @@ describe('ProductsService', () => {
 
       req.flush(
         { message: 'Error interno del servidor' },
-        { status: 500, statusText: 'Internal Server Error' }
+        { status: 500, statusText: 'Internal Server Error' },
       );
     });
-  
   });
-
 });

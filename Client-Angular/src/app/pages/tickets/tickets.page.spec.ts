@@ -16,9 +16,8 @@ describe('TicketsPage', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TicketsPage, TicketsTableComponent],
-      providers: [provideHttpClient()]
-    })
-    .compileComponents();
+      providers: [provideHttpClient()],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TicketsPage);
     component = fixture.componentInstance;
@@ -30,7 +29,9 @@ describe('TicketsPage', () => {
   });
 
   it('debería llamar a getAllTickets al iniciar', () => {
-    const spyGetAllTickets = jest.spyOn(ticketsService, 'getAllTickets').mockReturnValue(of(TICKETS_MOCK));
+    const spyGetAllTickets = jest
+      .spyOn(ticketsService, 'getAllTickets')
+      .mockReturnValue(of(TICKETS_MOCK));
     fixture.detectChanges();
     expect(spyGetAllTickets).toHaveBeenCalled();
   });
@@ -50,9 +51,9 @@ describe('TicketsPage', () => {
   it('debería pasar los tickets al componente tickets-table', () => {
     jest.spyOn(ticketsService, 'getAllTickets').mockReturnValue(of(TICKETS_MOCK));
     fixture.detectChanges();
-    const tableComponent = fixture.debugElement
-      .query(By.directive(TicketsTableComponent))
-      .componentInstance;
+    const tableComponent = fixture.debugElement.query(
+      By.directive(TicketsTableComponent),
+    ).componentInstance;
     expect(tableComponent.tickets).toEqual(TICKETS_MOCK);
   });
 
@@ -72,11 +73,10 @@ describe('TicketsPage', () => {
 
   it('debería establecer el estado en "error" si falla la carga', () => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
-    jest.spyOn(ticketsService, 'getAllTickets').mockReturnValue(
-      throwError(() => new Error('Error de red'))
-    );
+    jest
+      .spyOn(ticketsService, 'getAllTickets')
+      .mockReturnValue(throwError(() => new Error('Error de red')));
     fixture.detectChanges();
     expect(component.state).toBe('error');
   });
-
 });

@@ -11,10 +11,7 @@ describe('OrdersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(OrdersService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -62,7 +59,7 @@ describe('OrdersService', () => {
 
       req.flush(
         { message: 'Error interno del servidor' },
-        { status: 500, statusText: 'Internal Server Error' }
+        { status: 500, statusText: 'Internal Server Error' },
       );
     });
   });

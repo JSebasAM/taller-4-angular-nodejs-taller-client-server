@@ -23,7 +23,6 @@ import { Ticket } from '../../interfaces/tickets.interface';
   providedIn: 'root',
 })
 export class TicketsService {
-
   /**
    * Cliente HTTP de Angular para realizar peticiones a la API.
    * Se inyecta usando la función `inject`.

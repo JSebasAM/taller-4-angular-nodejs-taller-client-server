@@ -29,7 +29,6 @@ import { Ticket, TicketPriority, TicketStatus } from '../../interfaces/tickets.i
   imports: [BadgeAtom],
 })
 export class TicketsTableComponent {
-
   /**
    * Listado de tickets que se mostrarán en la tabla.
    *
@@ -52,10 +51,10 @@ export class TicketsTableComponent {
    * - 'Crítica'  → 'danger'    (rojo)
    */
   priorityMap: Record<TicketPriority, BadgeType> = {
-    'Baja': 'secondary',
-    'Media': 'primary',
-    'Alta': 'warning',
-    'Crítica': 'danger',
+    Baja: 'secondary',
+    Media: 'primary',
+    Alta: 'warning',
+    Crítica: 'danger',
   };
 
   /**
@@ -71,10 +70,10 @@ export class TicketsTableComponent {
    * - 'Cerrado'     → 'secondary'(gris)
    */
   statusMap: Record<TicketStatus, BadgeType> = {
-    'Abierto': 'danger',
+    Abierto: 'danger',
     'En Progreso': 'primary',
     'En Revisión': 'warning',
-    'Resuelto': 'success',
-    'Cerrado': 'secondary',
+    Resuelto: 'success',
+    Cerrado: 'secondary',
   };
 }
