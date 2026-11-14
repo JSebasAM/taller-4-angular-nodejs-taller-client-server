@@ -1,27 +1,43 @@
-import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
+import { of } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { USERS_MOCK } from '../mocks/users.mocks';
+import { PRODUCTS_MOCK } from '../mocks/products.mocks';
+import { providersMock } from '../mocks/providers.mocks';
+import { ORDERS_MOCK } from '../mocks/orders.mocks';
+import { TICKETS_MOCK } from '../mocks/tickets.mocks';
 
 /**
- * Interceptor HTTP que concatena la URL base a todas las peticiones salientes.
+ * Interceptor HTTP que gestiona las peticiones de la aplicación.
  *
- * Este interceptor se encarga de anteponer el `baseUrl` definido en el
- * archivo de configuración de entornos (`environment`) a cada request HTTP.
+ * En modo normal (`environment.useMock = false`), antepone el `baseUrl`
+ * para comunicarse con el servidor real de Node.js.
  *
- * ⚠️ Nota:
- * - No debe usarse con URLs absolutas (`http://`, `https://`)
- * - Está pensado para trabajar con rutas relativas como `/users`, `/login`, etc.
- *
- * @example
- * Petición original:
- * ```ts
- * this.http.get('/users');
- * ```
- *
- * Petición final:
- * ```ts
- * https://api.midominio.com/users
- * ```
+ * En modo demo (`environment.useMock = true`, usado en GitHub Pages),
+ * intercepta los endpoints /api/users, /api/products, /api/providers,
+ * /api/orders y /api/tickets retornando datos simulados locales acordes
+ * al Swagger y modelos del servidor.
  */
 export const clientAngularInterceptor: HttpInterceptorFn = (req, next) => {
-  return next(req.clone({ url: `${environment.baseUrl}/${req.url}`}));
+  if (environment.useMock) {
+    const url = req.url;
+
+    if (url.includes('api/users')) {
+      return of(new HttpResponse({ status: 200, body: USERS_MOCK }));
+    }
+    if (url.includes('api/products')) {
+      return of(new HttpResponse({ status: 200, body: PRODUCTS_MOCK }));
+    }
+    if (url.includes('api/providers')) {
+      return of(new HttpResponse({ status: 200, body: providersMock }));
+    }
+    if (url.includes('api/orders')) {
+      return of(new HttpResponse({ status: 200, body: ORDERS_MOCK }));
+    }
+    if (url.includes('api/tickets')) {
+      return of(new HttpResponse({ status: 200, body: TICKETS_MOCK }));
+    }
+  }
+
+  return next(req.clone({ url: `${environment.baseUrl}/${req.url}` }));
 };
