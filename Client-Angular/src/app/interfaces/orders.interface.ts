@@ -70,4 +70,3 @@ export interface Order {
   /** Fecha y hora de creación en formato ISO */
   createdAt: string;
 }
-

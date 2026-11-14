@@ -11,10 +11,7 @@ describe('TicketsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ]
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(TicketsService);
     httpMock = TestBed.inject(HttpTestingController);
@@ -26,15 +23,12 @@ describe('TicketsService', () => {
   });
 
   describe('Creación del servicio', () => {
-
     it('debería crearse correctamente', () => {
       expect(service).toBeTruthy();
     });
-
   });
 
   describe('getAllTickets', () => {
-
     it('debería realizar una petición GET y retornar una lista de tickets', () => {
       const countTickets = 3;
       const mockTickets: Ticket[] = TICKETS_MOCK;
@@ -66,7 +60,7 @@ describe('TicketsService', () => {
 
       req.flush(
         { message: 'Error interno del servidor' },
-        { status: 500, statusText: 'Internal Server Error' }
+        { status: 500, statusText: 'Internal Server Error' },
       );
     });
 
@@ -79,7 +73,5 @@ describe('TicketsService', () => {
       expect(req.request.url).toBe(`api/tickets/${countTickets}`);
       req.flush([]);
     });
-
   });
-
 });

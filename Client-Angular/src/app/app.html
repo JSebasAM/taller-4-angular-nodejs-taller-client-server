@@ -1,7 +1,12 @@
 <div class="mx-5">
-    <dsb-navbar-organism [navbarConfig]="navbarConfig"></dsb-navbar-organism>
+  <dsb-navbar-organism [navbarConfig]="navbarConfig"></dsb-navbar-organism>
 </div>
+@if (isDemo) {
+  <aside class="alert alert-info py-1 px-3 mb-2 mx-5 text-center small demo-notice" role="status">
+    <i class="bi bi-info-circle me-1"></i> Modo demo: datos simulados
+  </aside>
+}
 <div class="divider-spacing"></div>
 <section>
-    <router-outlet />
+  <router-outlet />
 </section>

@@ -24,12 +24,7 @@ export type TicketPriority = 'Baja' | 'Media' | 'Alta' | 'Crítica';
  * const estado: TicketStatus = 'En Progreso';
  * ```
  */
-export type TicketStatus =
-  | 'Abierto'
-  | 'En Progreso'
-  | 'En Revisión'
-  | 'Resuelto'
-  | 'Cerrado';
+export type TicketStatus = 'Abierto' | 'En Progreso' | 'En Revisión' | 'Resuelto' | 'Cerrado';
 
 /**
  * Interfaz que representa un ticket o incidencia del sistema.

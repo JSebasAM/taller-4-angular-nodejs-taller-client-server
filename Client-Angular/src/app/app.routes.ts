@@ -5,7 +5,6 @@ import { ProvidersPage } from './pages/providers/providers.page';
 import { OrdersPage } from './pages/orders/orders.page';
 import { TicketsPage } from './pages/tickets/tickets.page';
 
-
 /**
  * Definición de las rutas principales de la aplicación.
  *
@@ -25,7 +24,6 @@ import { TicketsPage } from './pages/tickets/tickets.page';
  * @see {@link TicketsPage}
  */
 export const routes: Routes = [
-
   /**
    * Ruta de usuarios.
    *
@@ -44,7 +42,7 @@ export const routes: Routes = [
    */
   { path: 'products', component: ProductsPage },
 
-    /**
+  /**
    * Ruta de proveedores.
    *
    * @remarks
@@ -53,7 +51,6 @@ export const routes: Routes = [
    */
   { path: 'providers', component: ProvidersPage },
 
-
   /**
    * Ruta de pedidos.
    *
@@ -61,7 +58,7 @@ export const routes: Routes = [
    * Renderiza el componente `OrdersPage`, encargado
    * de mostrar y gestionar el listado de pedidos.
    */
-  { path: 'orders', component: OrdersPage},
+  { path: 'orders', component: OrdersPage },
 
   /**
    * Ruta de tickets de incidencias.
@@ -81,4 +78,3 @@ export const routes: Routes = [
    */
   { path: '**', redirectTo: 'users' },
 ];
-

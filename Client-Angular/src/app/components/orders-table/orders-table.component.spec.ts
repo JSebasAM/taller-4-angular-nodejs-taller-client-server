@@ -63,4 +63,3 @@ describe('OrdersTableComponent', () => {
     expect(component.statusMap['CANCELLED']).toBe('danger');
   });
 });
-

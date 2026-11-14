@@ -22,7 +22,6 @@ import { Product } from '../../interfaces/products.interface';
   providedIn: 'root',
 })
 export class ProductsService {
-
   /**
    * Cliente HTTP de Angular para realizar peticiones a la API.
    * Se inyecta usando la función `inject`.

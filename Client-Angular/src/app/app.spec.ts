@@ -11,9 +11,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [
-        provideRouter([])
-      ]
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(App);
@@ -30,15 +28,15 @@ describe('App', () => {
       title: 'Angular Client',
       iconConfig: {
         icon: 'bootstrap',
-        size: 2
+        size: 2,
       },
       navLinks: [
         { text: 'Usuarios', url: '/users' },
         { text: 'Productos', url: '/products' },
         { text: 'Proveedores', url: '/providers' },
         { text: 'Orders', url: '/orders' },
-        { text: 'Tickets', url: '/tickets' }
-      ]
+        { text: 'Tickets', url: '/tickets' },
+      ],
     });
   });
 
@@ -48,9 +46,9 @@ describe('App', () => {
   });
 
   it('debería pasar la configuración al NavbarOrganism', () => {
-    const navbarComponent = fixture.debugElement
-      .query(By.directive(NavbarOrganism))
-      .componentInstance;
+    const navbarComponent = fixture.debugElement.query(
+      By.directive(NavbarOrganism),
+    ).componentInstance;
     expect(navbarComponent.navbarConfig).toEqual(component.navbarConfig);
   });
 
@@ -59,4 +57,11 @@ describe('App', () => {
     expect(routerOutlet).toBeTruthy();
   });
 
+  it('debería mostrar el aviso de modo demo si isDemo es verdadero', () => {
+    (component as unknown as { isDemo: boolean }).isDemo = true;
+    fixture.detectChanges();
+    const demoNotice = fixture.nativeElement.querySelector('.demo-notice');
+    expect(demoNotice).toBeTruthy();
+    expect(demoNotice.textContent).toContain('Modo demo: datos simulados');
+  });
 });
